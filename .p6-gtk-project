@@ -1,0 +1,3 @@
+prefix=Secret
+modules=Secret::Raw::Types
+backups=backup,bitbucket,google-backup,azure-backupm,hut
