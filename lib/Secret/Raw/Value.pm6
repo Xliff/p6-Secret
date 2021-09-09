@@ -1,5 +1,7 @@
 use v6.c;
 
+use NativeCall;
+
 use GLib::Raw::Definitions;
 use Secret::Raw::Definitions;
 
@@ -54,7 +56,7 @@ sub secret_value_ref (SecretValue $value)
   is export
 { * }
 
-sub secret_value_unref (gpointer $value)
+sub secret_value_unref (SecretValue $value)
   is native(secret)
   is export
 { * }

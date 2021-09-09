@@ -9,7 +9,7 @@ use GLib::Roles::Object;
 # BOXED
 
 class Secret::Value {
-  has SecretValue %!sv;
+  has SecretValue $!sv;
 
   submethod BUILD (:$secret-value) {
     $!sv = $secret-value;
@@ -30,7 +30,7 @@ class Secret::Value {
     Str() $content_type,
           &destroy       = &g_free
   ) {
-    secret_value_new_full($!sv, $secret, $length, $content_type, $destroy);
+    secret_value_new_full($!sv, $secret, $length, $content_type, &destroy);
   }
 
   method get (Int() $length) {

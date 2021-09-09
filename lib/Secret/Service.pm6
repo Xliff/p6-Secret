@@ -1,6 +1,8 @@
 use v6.c;
 
-use Secret::Raw:Types;
+use NativeCall;
+
+use Secret::Raw::Types;
 use Secret::Raw::Service;
 
 use GLib::GList;
@@ -13,7 +15,7 @@ our subset SecretServiceAncestry is export of Mu
 class Secret::Service is GIO::DBus::Proxy {
   has SecretService $!ss;
 
-  method new (
+  multi method new (
     Int()                   $flags        =  0,
     GCancellable()          $cancellable  =  GCancellable,
     CArray[Pointer[GError]] $error        =  gerror,
@@ -22,11 +24,11 @@ class Secret::Service is GIO::DBus::Proxy {
     self.get_sync($flags, $cancellable, $error);
   }
 
-  method new (
+  multi method new (
     Str()                   $service_bus_name,
     Int()                   $flags,
     GCancellable()          $cancellable       = GCancellable,
-    CArray[Pointer[GError]] $error             = gerror
+    CArray[Pointer[GError]] $error             = gerror,
                             :$open             is required
   ) {
     self.open_sync($service_bus_name, $flags, $cancellable, $error);
@@ -93,7 +95,7 @@ class Secret::Service is GIO::DBus::Proxy {
   }
 
   method disconnect {
-    secret_service_disconnect($!ss);
+    secret_service_disconnect();
   }
 
   proto method ensure_session (|)
@@ -101,8 +103,8 @@ class Secret::Service is GIO::DBus::Proxy {
 
   multi method ensure_session (
                    &callback,
-    gpointer       $user_data    = gpointer
-    GCancellable() :$cancellable = GCancelable
+    gpointer       $user_data    = gpointer,
+    GCancellable() :$cancellable = GCancellable
   ) {
     samewith($cancellable, &callback, $user_data);
   }
@@ -166,9 +168,12 @@ class Secret::Service is GIO::DBus::Proxy {
     );
   }
 
-  method get_finish (CArray[Pointer[GError]] $error = gerror) {
+  method get_finish (
+    GAsyncResult()          $result,
+    CArray[Pointer[GError]] $error = gerror
+  ) {
     clear_error;
-    my $secret-service = secret_service_get_finish($!ss, $error);
+    my $secret-service = secret_service_get_finish($result, $error);
     set_error($error);
     $secret-service ?? self.bless( :$secret-service ) !! Nil;
   }
@@ -226,7 +231,7 @@ class Secret::Service is GIO::DBus::Proxy {
     CArray[Pointer[GError]] $error   = gerror
   ) {
     clear_error;
-    my $rv = so secret_servie_load_collections_finish($!ss, $result, $error);
+    my $rv = so secret_service_load_collections_finish($!ss, $result, $error);
     set_error($error);
     $rv;
   }
@@ -250,7 +255,7 @@ class Secret::Service is GIO::DBus::Proxy {
   multi method lock (
     GList()        $objects,
                    &callback,
-    gpointer       $user_data   = gpointer
+    gpointer       $user_data   = gpointer,
     GCancellable() $cancellable = GCancellable
   ) {
     samewith($objects, $cancellable, &callback, $user_data);
@@ -404,10 +409,13 @@ class Secret::Service is GIO::DBus::Proxy {
     );
   }
 
-  method open_finish (CArray[Pointer[GError]] $error  = gerror) {
+  method open_finish (
+    GAsyncResult()          $result,
+    CArray[Pointer[GError]] $error  = gerror
+  ) {
     clear_error;
 
-    my $secret-service = secret_service_open_finish($!ss, $error);
+    my $secret-service = secret_service_open_finish($result, $error);
 
     $secret-service ?? self.bless( :$secret-service ) !! Nil;
   }
@@ -439,7 +447,8 @@ class Secret::Service is GIO::DBus::Proxy {
     Int()          $return_type,
                    &callback,
     gpointer       $user_data    = gpointer,
-    GCancellable() :$cancellable = GCancellable
+    GCancellable() :$cancellable = GCancellable,
+                   :$raw         = False
   ) {
     samewith($prompt, $return_type, $cancellable, &callback, $user_data);
   }
@@ -468,7 +477,7 @@ class Secret::Service is GIO::DBus::Proxy {
                             :$raw    = False
   ) {
     returnObject(
-      secret_service_prompt_finish($!ss, $result, $error)
+      secret_service_prompt_finish($!ss, $result, $error),
       $raw,
       GVariant,
       GLib::Variant
@@ -482,20 +491,23 @@ class Secret::Service is GIO::DBus::Proxy {
     SecretPrompt()          $prompt,
     Int()                   $return_type,
     CArray[Pointer[GError]] $error         = gerror,
-    GCancellable()          :$cancellable  = GCancellable
+    GCancellable()          :$cancellable  = GCancellable,
+                            :$raw          = False,
   ) {
     samewith(
       $prompt,
       $cancellable,
       $return_type,
-      $error
+      $error,
+      :$raw
     );
   }
   multi method prompt_sync (
     SecretPrompt()          $prompt,
     GCancellable()          $cancellable,
     Int()                   $return_type,
-    CArray[Pointer[GError]] $error
+    CArray[Pointer[GError]] $error,
+                            :$raw         = False
   ) {
     my GVariantType $r = $return_type;
 
@@ -516,7 +528,7 @@ class Secret::Service is GIO::DBus::Proxy {
   proto method search (|)
   { * }
 
-  method search (
+  multi method search (
     SecretSchema() $schema,
     GHashTable()   $attributes,
     Int()          $flags,
@@ -526,7 +538,7 @@ class Secret::Service is GIO::DBus::Proxy {
   ) {
     samewith($schema, $attributes, $flags, $cancellable, &callback, $user_data);
   }
-  method search (
+  multi method search (
     SecretSchema() $schema,
     GHashTable()   $attributes,
     Int()          $flags,
@@ -561,8 +573,8 @@ class Secret::Service is GIO::DBus::Proxy {
       $glist,
       SecretItem,
       Secret::Item;
-    )
-    set_error($error)
+    );
+    set_error($error);
     $sil;
   }
 
@@ -747,7 +759,7 @@ class Secret::Service is GIO::DBus::Proxy {
     secret_service_unlock($!ss, $objects, $cancellable, &callback, $user_data);
   }
 
-  method unlock_finish (
+  multi method unlock_finish (
     GAsyncResult()          $result,
     CArray[Pointer[GError]] $error    =  gerror,
                             :$raw     =  False,
@@ -755,7 +767,7 @@ class Secret::Service is GIO::DBus::Proxy {
   ) {
     samewith($result, $, $error, :$raw, :$glist)
   }
-  method unlock_finish (
+  multi method unlock_finish (
     GAsyncResult()          $result,
                             $unlocked is rw,
     CArray[Pointer[GError]] $error    =  gerror,
@@ -767,7 +779,7 @@ class Secret::Service is GIO::DBus::Proxy {
     clear_error;
     # Sinking count of elements unlocked, as that is still available via $gl
     secret_service_unlock_finish($!ss, $result, $gl, $error);
-    set_error($gerror);
+    set_error($error);
 
     returnGList(
       $unlocked = ppr($gl),
@@ -778,11 +790,27 @@ class Secret::Service is GIO::DBus::Proxy {
     );
   }
 
-  method unlock_sync (
+  proto method unlock_sync (|)
+  { * }
+
+  multi method unlock_sync (
     GList                   $objects,
-    GCancellable            $cancellable =  GCancellable,
+    CArray[Pointer[GError]] $error        = gerror,
+    GCancellable            :$cancellable = GCancellable,
+                            :$raw         =  False,
+                            :$glist       =  False,
+                            :$seq         =  True
+  ) {
+    samewith($objects, $cancellable, $, $error, :$raw, :$glist, :$seq);
+  }
+  multi method unlock_sync (
+    GList                   $objects,
+    GCancellable            $cancellable,
                             $unlocked    is rw,
-    CArray[Pointer[GError]] $error       =  gerror
+    CArray[Pointer[GError]] $error       =  gerror,
+                            :$raw        =  False,
+                            :$glist      =  False,
+                            :$seq        =  True
   ) {
     (my $gl = CArray[GList])[0] = GList;
 
@@ -796,7 +824,8 @@ class Secret::Service is GIO::DBus::Proxy {
       $raw,
       $glist,
       GDBusProxy,
-      GIO::DBus::Proxy
+      GIO::DBus::Proxy,
+      :$seq
     );
   }
 }

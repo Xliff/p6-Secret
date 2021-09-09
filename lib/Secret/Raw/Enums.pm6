@@ -4,6 +4,13 @@ use GLib::Raw::Definitions;
 
 unit package Secret::Raw::Enums;
 
+constant SecretServiceFlags is export := guint32;
+our enum SecretServiceFlagsEnum is export (
+  SECRET_SERVICE_NONE             =>      0,
+  SECRET_SERVICE_OPEN_SESSION     => 1 +< 1,
+  SECRET_SERVICE_LOAD_COLLECTIONS => 1 +< 2,
+);
+
 constant SecretBackendFlags is export := guint32;
 our enum SecretBackendFlagsEnum is export (
   SECRET_BACKEND_NONE             =>             SECRET_SERVICE_NONE,
@@ -68,11 +75,4 @@ our enum SecretSearchFlagsEnum is export (
   SECRET_SEARCH_ALL          => 1 +< 1,
   SECRET_SEARCH_UNLOCK       => 1 +< 2,
   SECRET_SEARCH_LOAD_SECRETS => 1 +< 3,
-);
-
-constant SecretServiceFlags is export := guint32;
-our enum SecretServiceFlagsEnum is export (
-  SECRET_SERVICE_NONE             =>      0,
-  SECRET_SERVICE_OPEN_SESSION     => 1 +< 1,
-  SECRET_SERVICE_LOAD_COLLECTIONS => 1 +< 2,
 );

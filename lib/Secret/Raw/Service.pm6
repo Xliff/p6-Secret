@@ -1,7 +1,13 @@
 use v6.c;
 
+use NativeCall;
+
 use GLib::Raw::Definitions;
+use GLib::Raw::Structs;
+use GIO::Raw::Definitions;
 use Secret::Raw::Definitions;
+use Secret::Raw::Enums;
+use Secret::Raw::Structs;
 
 unit package Secret::Raw::Service;
 
