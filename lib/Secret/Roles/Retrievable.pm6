@@ -11,6 +11,14 @@ use Secret::Value;
 role Secret::Roles::Retrievable {
   has SecretRetrievable $!sr;
 
+  method Secret::Raw::Definitions::SecretRetrievable
+  { $!sr }
+
+  method roleInit-SecretRetrievable {
+    my \i = findProperImplementor(self.^attributes);
+    $!sr = cast(SecretRetrievable, i);
+  }
+
   method get_attributes (:$raw = False) {
     propReturnObject(
       secret_retrievable_get_attributes($!sr),
@@ -77,6 +85,48 @@ role Secret::Roles::Retrievable {
     set_error($error);
 
     propReturnObject($v, $raw, SecretValue, Secret::Value);
+  }
+
+}
+
+our subset SecretRetrievableAncestry is export of Mu
+  where SecretRetrievable | GObject;
+
+class Secret::Retrievable
+  does GLib::Roles::Object
+  does Secret::Roles::Retrievable
+{
+
+  submethod BUILD (:$secret-retrievable) {
+    self.setSecretRetrievable($secret-retrievable) if $secret-retrievable;
+  }
+
+  method setSecretRetrievable (SecretRetrievableAncestry $_) {
+    my $to-parent;
+
+    $!sr = do {
+      when SecretRetrievable {
+        $to-parent = cast(GObject, $_);
+        $_;
+      }
+
+      default {
+        $to-parent = $_;
+        cast(SecretRetrievable, $_);
+      }
+    }
+    self!setObject($to-parent);
+  }
+
+  multi method new (
+    SecretRetrievableAncestry $secret-retrievable,
+                              :$ref                 = True
+  ) {
+    return Nil unless $secret-retrievable;
+
+    my $o = self.bless( :$secret-retrievable );
+    $o.ref if $ref;
+    $o
   }
 
 }
