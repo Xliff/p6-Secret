@@ -7,6 +7,7 @@ use Method::Also;
 use Secret::Raw::Types;
 use Secret::Raw::Item;
 
+use GLib::Value;
 use GIO::DBus::Proxy;
 
 our subset SecretItemAncestry is export of Mu
@@ -55,6 +56,61 @@ class Secret::Item is GIO::DBus::Proxy {
     my $o = self.bless( :$secret-item );
     $o.ref if $ref;
     $o;
+  }
+
+  # Type: SecretItemFlags
+  method flags is rw  {
+    my $gv = GLib::Value.new( GLib::Value.gtypeFromType(SecretItemFlags) );
+    Proxy.new(
+      FETCH => sub ($) {
+        $gv = GLib::Value.new(
+          self.prop_get('flags', $gv)
+        );
+
+        $gv.valueFromType(SecretItemFlags);
+      },
+      STORE => -> $,  $val is copy {
+        warn 'flags is a construct-only attribute'
+      }
+    );
+  }
+
+  # Type: gboolean
+  method locked is rw  {
+    my $gv = GLib::Value.new( G_TYPE_BOOLEAN );
+    Proxy.new(
+      FETCH => sub ($) {
+        $gv = GLib::Value.new(
+          self.prop_get('locked', $gv)
+        );
+        $gv.boolean;
+      },
+      STORE => -> $, Int() $val is copy {
+        warn 'locked does not allow writing'
+      }
+    );
+  }
+
+  # Type: SecretService
+  method service (:$raw = False) is rw  {
+    my $gv = GLib::Value.new( Secret::Service.get-type );
+    Proxy.new(
+      FETCH => sub ($) {
+        $gv = GLib::Value.new(
+          self.prop_get('service', $gv)
+        );
+
+        propReturnObject(
+          $gv.object,
+          $raw,
+          SecretService,
+          Secret::Service
+        );
+      },
+      STORE => -> $,  $val is copy {
+        warn 'service is a construct-only attribute'
+      }
+    );
   }
 
   proto method create (|)
