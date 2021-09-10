@@ -15,6 +15,8 @@ role Secret::Roles::Retrievable {
   { $!sr }
 
   method roleInit-SecretRetrievable {
+    return if $!sr;
+
     my \i = findProperImplementor(self.^attributes);
     $!sr = cast(SecretRetrievable, i);
   }
