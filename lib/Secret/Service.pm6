@@ -13,7 +13,7 @@ our subset SecretServiceAncestry is export of Mu
   where SecretService | GDBusProxyAncestry;
 
 class Secret::Service is GIO::DBus::Proxy {
-  has SecretService $!ss;
+  has SecretService $!ss is implementor;
 
   multi method new (
     Int()                   $flags        =  0,
