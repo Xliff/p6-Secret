@@ -10,10 +10,14 @@ use Secret::Raw::Item;
 use GLib::Value;
 use GIO::DBus::Proxy;
 
+use Secret::Roles::Retrievable;
+
 our subset SecretItemAncestry is export of Mu
-  where SecretItem | GDBusProxyAncestry;
+  where SecretItem | SecretRetrievable | GDBusProxyAncestry;
 
 class Secret::Item is GIO::DBus::Proxy {
+  also does Secret::Roles::Retrievable;
+
   has SecretItem $!si is implementor;
 
   submethod BUILD (
@@ -37,6 +41,12 @@ class Secret::Item is GIO::DBus::Proxy {
         $_;
       }
 
+      when SecretRetrievable {
+        $!sr = $_;
+        $to-parent = cast(GDBusProxy, $_);
+        cast(SecretItem, $_);
+      }
+
       default {
         $to-parent = $_;
         cast(SecretItem, $_);
@@ -44,6 +54,7 @@ class Secret::Item is GIO::DBus::Proxy {
     }
 
     self.setGDBusProxy($to-parent, :$init, :$cancellable);
+    self.roleInit-SecretRetrievable;
   }
 
   method GIO::Raw::Definitions::SecretItem
