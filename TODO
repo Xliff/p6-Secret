@@ -1,0 +1,11 @@
+- secret_attribute_build() uses C's variable argument structure to create
+  a GHashTable. Since creating GHashTable's are still problematic, a
+  helper library must be created that will use secret_attribute_build().
+
+  To do this, the helper shall be able to take an array of up to 16 pairs.
+  The call to secret_attribute_build must account for ALL POSSIBLE CALLS
+  PATTERS. This means that there shall be 16 CALLS TO secret_attribute_build,
+  depending on the length of the array.
+
+  Sucks. I know -- blame the people who created, and didn't update, the
+  various va_arg specs.
