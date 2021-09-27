@@ -6,6 +6,7 @@ use Method::Also;
 
 use Secret::Raw::Types;
 use Secret::Raw::Item;
+use Secret::Raw::Paths;
 
 use GLib::Value;
 use GIO::DBus::Proxy;
@@ -68,6 +69,83 @@ class Secret::Item is GIO::DBus::Proxy {
     $o.ref if $ref;
     $o;
   }
+
+  proto method new_for_dbus_path (|)
+    is also<new-for-dbus-path>
+  { * }
+
+  multi method new_for_dbus_path (
+    SecretService()   $service,
+    Str()             $item_path,
+    &callback,
+    SecretItemFlags() $flags       = SecretItemFlags,
+    GCancellable()    $cancellable = GCancellable,
+    gpointer          $user_data   = gpointer
+  ) {
+    samewith(
+      $service,
+      $item_path,
+      $flags,
+      $cancellable,
+      &callback,
+      $user_data
+    );
+  }
+  multi method new_for_dbus_path (
+    SecretService()   $service,
+    Str()             $item_path,
+    SecretItemFlags() $flags,
+    GCancellable()    $cancellable,
+                      &callback,
+    gpointer          $user_data = gpointer
+  ) {
+    secret_item_new_for_dbus_path(
+      $service,
+      $item_path,
+      $flags,
+      $cancellable,
+      &callback,
+      $user_data
+    );
+  }
+
+  method new_for_dbus_path_finish (
+    GAsyncResult()          $result,
+    CArray[Pointer[GError]] $error   = gerror
+  )
+    is also<new-for-dbus-path-finish>
+  {
+    clear_error;
+    my $secret-item = secret_item_new_for_dbus_path_finish($result, $error);
+    set_error($error);
+
+    $secret-item ?? self.bless( :$secret-item ) !! Nil;
+  }
+
+  method new_for_dbus_path_sync (
+    SecretService()         $service,
+    Str()                   $item_path,
+    Int()                   $flags           = 0,
+    GCancellable            $cancellable     = GCancellable,
+    CArray[Pointer[GError]] $error           = gerror
+  )
+    is also<new-for-dbus-path-sync>
+  {
+    my SecretItemFlags         $f = $flags;
+
+    clear_error;
+    my $secret-item = secret_item_new_for_dbus_path_sync(
+      $service,
+      $item_path,
+      $flags,
+      $cancellable,
+      $error
+    );
+    set_error($error);
+
+    $secret-item ?? self.bless( :$secret-item ) !! Nil;
+  }
+
 
   # Type: SecretItemFlags
   method flags is rw  {
