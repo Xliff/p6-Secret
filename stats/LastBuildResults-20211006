@@ -1,0 +1,632 @@
+Dependency Generation
+=====================
+real 0.65
+user 1.04
+sys 0.05
+ === GIO::DBus::Proxy === (1/46)
+Stage start      :   0.000
+Stage parse      :   3.205
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.005
+Stage moar       :   0.000
+ === GIO::DBus::Raw::Types === (2/46)
+Stage start      :   0.000
+Stage parse      :   2.389
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.002
+Stage moar       :   0.000
+ === GIO::Raw::Definitions === (3/46)
+Stage start      :   0.000
+Stage parse      :   2.073
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GIO::Raw::Enums === (4/46)
+Stage start      :   0.000
+Stage parse      :   2.064
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GIO::Raw::Exports === (5/46)
+Stage start      :   0.000
+Stage parse      :   1.874
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIO::Raw::Quarks === (6/46)
+Stage start      :   0.000
+Stage parse      :   2.278
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.017
+Stage moar       :   0.000
+ === GIO::Raw::Structs === (7/46)
+Stage start      :   0.000
+Stage parse      :   2.305
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GIO::Raw::Subs === (8/46)
+Stage start      :   0.000
+Stage parse      :   2.283
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::GList === (9/46)
+Stage start      :   0.000
+Stage parse      :   2.357
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::HashTable === (10/46)
+Stage start      :   0.000
+»»»»»»
+» Please note that the objects in /home/cbwood/Projects/p6-GLib/lib/GLib/HashTable.pm6 (GLib::HashTable) are classed as use-at-your-own-risk!
+» Accessing an object created from C should be usable, but creating objects of
+» this type, via Raku, may behave erratically.
+»»»»»»
+
+Stage parse      :   2.360
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Raw::Definitions === (11/46)
+Stage start      :   0.000
+Stage parse      :   2.107
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Raw::Enums === (12/46)
+Stage start      :   0.000
+Stage parse      :   2.165
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.003
+Stage mast       :   0.007
+Stage mbc        :   0.003
+Stage moar       :   0.000
+ === GLib::Raw::Exceptions === (13/46)
+Stage start      :   0.000
+Stage parse      :   1.917
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GLib::Raw::Exports === (14/46)
+Stage start      :   0.000
+Stage parse      :   2.050
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GLib::Raw::Memory === (15/46)
+Stage start      :   0.000
+Stage parse      :   2.464
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Raw::Object === (16/46)
+Stage start      :   0.000
+Stage parse      :   2.219
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Raw::Struct_Subs === (17/46)
+Stage start      :   0.000
+Stage parse      :   2.122
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Raw::Structs === (18/46)
+Stage start      :   0.000
+Stage parse      :   2.313
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.002
+Stage moar       :   0.000
+ === GLib::Raw::Subs === (19/46)
+Stage start      :   0.000
+Stage parse      :   2.248
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.017
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Roles::Object === (20/46)
+Stage start      :   0.000
+Stage parse      :   2.587
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.002
+Stage moar       :   0.000
+ === GLib::Roles::Pointers === (21/46)
+Stage start      :   0.000
+Stage parse      :   2.036
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Roles::StaticClass === (22/46)
+Stage start      :   0.000
+Stage parse      :   2.367
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Value === (23/46)
+Stage start      :   0.000
+Stage parse      :   2.330
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.002
+Stage moar       :   0.000
+ === GLib::Variant === (24/46)
+Stage start      :   0.000
+Stage parse      :   2.363
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === Method::Also === (25/46)
+Stage start      :   0.000
+Stage parse      :   1.880
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === NativeCall === (26/46)
+Stage start      :   0.000
+Stage parse      :   1.973
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === Secret::Raw::Definitions === (27/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Raw/Definitions.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.156
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.001
+    Stage mast       :   0.009
+    Stage mbc        :   0.002
+Stage parse      :   4.097
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === Secret::Raw::Enums === (28/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Raw/Enums.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.405
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.005
+    Stage mast       :   0.022
+    Stage mbc        :   0.005
+Stage parse      :   4.465
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === Secret::Raw::Retrievable === (29/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Raw/Retrievable.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.832
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.005
+    Stage mast       :   0.026
+    Stage mbc        :   0.006
+Stage parse      :   4.928
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === Secret::Raw::Structs === (30/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Raw/Structs.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.378
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.004
+    Stage mast       :   0.018
+    Stage mbc        :   0.003
+Stage parse      :   4.332
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === Secret::Raw::Exports === (31/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Raw/Exports.pm6
+    Stage start      :   0.000
+    Stage parse      :   0.086
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.001
+    Stage mast       :   0.004
+    Stage mbc        :   0.000
+Stage parse      :   2.010
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === Secret::Raw::Types === (32/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Raw/Types.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.219
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.001
+    Stage mast       :   0.015
+    Stage mbc        :   0.003
+Stage parse      :   5.349
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.010
+Stage mast       :   0.014
+Stage mbc        :   0.008
+Stage moar       :   0.000
+ === Secret::Raw::Value === (33/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Raw/Value.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.284
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.005
+    Stage mast       :   0.021
+    Stage mbc        :   0.005
+Stage parse      :   4.242
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === Secret::Value === (34/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Value.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.009
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.015
+    Stage mast       :   0.025
+    Stage mbc        :   0.031
+Stage parse      :   5.229
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.011
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === Secret::Raw::Collection === (35/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Raw/Collection.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.125
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.021
+    Stage mast       :   0.071
+    Stage mbc        :   0.018
+Stage parse      :   5.216
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === Secret::Raw::Item === (36/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Raw/Item.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.200
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.019
+    Stage mast       :   0.081
+    Stage mbc        :   0.021
+Stage parse      :   5.371
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === Secret::Raw::Password === (37/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Raw/Password.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.441
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.047
+    Stage mast       :   0.128
+    Stage mbc        :   0.034
+Stage parse      :   5.682
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.005
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === Secret::Raw::Paths === (38/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Raw/Paths.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.444
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.050
+    Stage mast       :   0.134
+    Stage mbc        :   0.031
+Stage parse      :   5.715
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === Secret::Raw::Prompt === (39/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Raw/Prompt.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.694
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.011
+    Stage mast       :   0.021
+    Stage mbc        :   0.005
+Stage parse      :   4.754
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === Secret::Raw::Service === (40/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Raw/Service.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.458
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.041
+    Stage mast       :   0.107
+    Stage mbc        :   0.024
+Stage parse      :   5.666
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === Secret::Roles::Retrievable === (41/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Roles/Retrievable.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.370
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.012
+    Stage mast       :   0.068
+    Stage mbc        :   0.008
+»»»»»»
+Stage parse      :   5.686
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+» Please note that the objects in /home/cbwood/Projects/p6-GLib/lib/GLib/HashTable.pm6 (GLib::HashTable) are classed as use-at-your-own-risk!
+» Accessing an object created from C should be usable, but creating objects of
+» this type, via Raku, may behave erratically.
+
+»»»»»»
+» Please note that the objects in /home/cbwood/Projects/p6-GLib/lib/GLib/HashTable.pm6 (GLib::HashTable) are classed as use-at-your-own-risk!
+» Accessing an object created from C should be usable, but creating objects of
+» this type, via Raku, may behave erratically.
+»»»»»»
+
+ === Secret::Service === (42/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Service.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.517
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.191
+    Stage mast       :   0.218
+    Stage mbc        :   0.024
+Stage parse      :   8.347
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === Secret::Collection === (43/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Collection.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.803
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.034
+    Stage mast       :   0.101
+    Stage mbc        :   0.018
+Stage parse      :   7.341
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === Secret::Item === (44/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Item.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.624
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.036
+    Stage mast       :   0.103
+    Stage mbc        :   0.018
+»»»»»»
+Stage parse      :   7.205
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+» Please note that the objects in /home/cbwood/Projects/p6-GLib/lib/GLib/HashTable.pm6 (GLib::HashTable) are classed as use-at-your-own-risk!
+» Accessing an object created from C should be usable, but creating objects of
+» this type, via Raku, may behave erratically.
+
+R: Secret::Roles::Retrievable
+»»»»»»
+» Please note that the objects in /home/cbwood/Projects/p6-GLib/lib/GLib/HashTable.pm6 (GLib::HashTable) are classed as use-at-your-own-risk!
+» Accessing an object created from C should be usable, but creating objects of
+» this type, via Raku, may behave erratically.
+»»»»»»
+
+ === Secret::Password === (45/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Password.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.424
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.065
+    Stage mast       :   0.185
+    Stage mbc        :   0.009
+Stage parse      :   5.852
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === Secret::Prompt === (46/46)
+Stage start      :   0.000
+
+    precomp lib/Secret/Prompt.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.442
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.015
+    Stage mast       :   0.047
+    Stage mbc        :   0.016
+Stage parse      :   6.892
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+
+real 175.48
+user 206.00
+sys 10.89
