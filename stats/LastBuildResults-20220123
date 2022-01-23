@@ -1,0 +1,49 @@
+Dependency Generation
+=====================
+real 0.90
+user 1.32
+sys 0.05
+ === GIO::DBus::Proxy === (1/46)
+Stage start      :   0.000
+
+    precomp ../p6-GIO/lib/GIO/DBus/Proxy.pm6
+    Stage start      :   0.000
+    
+        precomp ../p6-GIO/lib/GIO/DBus/Raw/Proxy.pm6
+        Stage start      :   0.000
+        Stage parse      :   2.784
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.018
+        Stage mast       :   0.045
+        Stage mbc        :   0.034
+    
+        precomp ../p6-GIO/lib/GIO/DBus/Connection.pm6
+        Stage start      :   0.000
+        
+            precomp ../p6-GIO/lib/GIO/DBus/Raw/Connection.pm6
+            Stage start      :   0.000
+            Stage parse      :   3.382
+            Stage syntaxcheck:   0.000
+            Stage ast        :   0.000
+            Stage optimize   :   0.031
+            Stage mast       :   0.060
+            Stage mbc        :   0.061
+        
+            precomp ../p6-GIO/lib/GIO/DBus/Message.pm6
+            Stage start      :   0.000
+            
+                precomp ../p6-GIO/lib/GIO/DBus/Raw/Message.pm6
+                Stage start      :   0.000
+                Stage parse      :   3.431
+                Stage syntaxcheck:   0.000
+                Stage ast        :   0.000
+                Stage optimize   :   0.027
+                Stage mast       :   0.045
+                Stage mbc        :   0.068
+            
+                precomp ../p6-GIO/lib/GIO/UnixFDList.pm6
+                Stage start      :   0.000
+                
+                    precomp ../p6-GLib/lib/GLib/Roles/Object.pm6
+                    Stage start      :   0.000
