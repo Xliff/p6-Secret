@@ -6,10 +6,11 @@ use GLib::Raw::Exports;
 use GIO::Raw::Exports;
 use Secret::Raw::Exports;
 
-my constant forced = 0;
+my constant forced = 204;
 
 unit package Secret::Raw::Types;
 
+need GLib::Raw::Debug;
 need GLib::Raw::Definitions;
 need GLib::Raw::Enums;
 need GLib::Raw::Exceptions;
